@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Banco.Forms
 {
-    public partial class Form1 : Form
+    public partial class FormInicial : Form
     {
-        public Form1()
+        public FormInicial()
         {
             InitializeComponent();
+            this.Text = "Banco Rodriguez";
         }
     }
 }
