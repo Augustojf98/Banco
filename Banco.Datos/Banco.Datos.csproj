@@ -35,6 +35,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,12 +47,6 @@
   <ItemGroup>
     <Compile Include="ClienteMapper.cs" />
     <Compile Include="CuentaMapper.cs" />
-    <Compile Include="PagoMorososMapper.cs" />
-    <Compile Include="PlazoFijoMapper.cs" />
-    <Compile Include="PrestamoMapper.cs" />
-    <Compile Include="PrestamoTipoMapper.cs" />
-    <Compile Include="TarjetaCreditoMapper.cs" />
-    <Compile Include="UtilidadesMapper.cs" />
     <Compile Include="WebHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

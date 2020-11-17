@@ -122,5 +122,25 @@ namespace Banco.Entidades
                 this.fechaModificacion = value;
             }
         }
+
+        public Cuenta() { }
+
+        public Cuenta(int _id, int _idCliente, int _nroCuenta, string _descripcion, float _saldo, bool _activo)
+        {
+            this.id = _id;
+            this.idCliente = _idCliente;
+            this.nroCuenta = _nroCuenta;
+            this.descripcion = _descripcion;
+            this.saldo = _saldo;
+            this.activo = _activo;
+            this.fechaApertura = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            this.fechaModificacion = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            this.activo = _activo;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Cuenta nº {0} - {1} | Fecha apertura: {2} - Ultima modificacion: {3}", this.nroCuenta, this.descripcion, this.fechaApertura.ToShortDateString(), this.fechaModificacion.ToShortDateString());
+        }
     }
 }
