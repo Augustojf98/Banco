@@ -55,14 +55,23 @@ namespace Banco.Negocio
                 throw new SinCuentasException();
         }
 
-        public int NuevaCuenta(int idCuenta, int idCliente, int nroCuenta, string descripcion)
+        public int NuevaCuenta(int idCliente, float saldoInicial, string descripcion)
         {
-            Cuenta cuenta = new Cuenta(idCuenta, idCliente, nroCuenta, descripcion, _saldo: 0, _activo: true);
+            int idCuenta = UltimoIdCuenta + 1;
+
+            do
+            {
+                idCuenta = idCuenta + 1;
+            }
+            while (BuscarCuentaById(idCuenta) != null);
+
+            Cuenta cuenta = new Cuenta(idCuenta, idCliente, _nroCuenta: 0, _descripcion: descripcion, _saldo: saldoInicial, _activo: true);
 
             TransactionResult result = cuentaMapper.Insert(cuenta);
 
             if (result.IsOk)
             {
+                this.Cuentas.Add(cuenta);
                 return result.Id;
             }
             else
@@ -106,6 +115,29 @@ namespace Banco.Negocio
                 }
             }
             return null;
+        }
+
+        internal Cuenta BuscarCuentaById(int id)
+        {
+            foreach (Cuenta cuenta in cuentas)
+            {
+                if (cuenta.Id == id)
+                {
+                    return cuenta;
+                }
+            }
+            return null;
+        }
+
+        public int UltimoIdCuenta
+        {
+            get
+            {
+                if (this.cuentas.Count > 0)
+                    return this.cuentas.Count;
+                else
+                    return 0;
+            }
         }
     }
 }
