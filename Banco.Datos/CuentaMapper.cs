@@ -20,7 +20,7 @@ namespace Banco.Datos
 
         public TransactionResult Insert(Cuenta cuenta)
         {
-            NameValueCollection obj = ReverseMap(cuenta);
+            NameValueCollection obj = ReverseMap(cuenta, string.Empty);
 
             string result = WebHelper.Post("/cuenta", obj);
 
@@ -31,9 +31,9 @@ namespace Banco.Datos
 
         public TransactionResult Put(Cuenta cuenta)
         {
-            NameValueCollection obj = ReverseMap(cuenta);
+            NameValueCollection obj = ReverseMap(cuenta, "Update");
 
-            string result = WebHelper.Put("/cuenta", obj);
+            string result = WebHelper.Post("/cuenta", obj);
 
             TransactionResult resultadoTransaccion = MapResultado(result);
 
@@ -59,16 +59,24 @@ namespace Banco.Datos
             return lst;
         }
 
-        private NameValueCollection ReverseMap(Cuenta cuenta)
+        private NameValueCollection ReverseMap(Cuenta cuenta, string tipo)
         {
             NameValueCollection n = new NameValueCollection();
-            n.Add("Id", cuenta.Id.ToString());
-            n.Add("IdCliente", cuenta.IdCliente.ToString());
-            n.Add("NroCuenta", cuenta.NroCuenta.ToString());
-            n.Add("Descripcion", cuenta.Descripcion);
-            n.Add("FechaApertura", cuenta.FechaApertura.ToShortDateString()); // DateTime
-            n.Add("FechaModificacion", cuenta.FechaModificacion.ToShortDateString()); // DateTime
-            n.Add("Activo", cuenta.Activo.ToString()); // bool
+            if (tipo == "Update")
+            {
+                n.Add("id", cuenta.Id.ToString());
+                n.Add("Saldo", cuenta.Saldo.ToString());
+            }
+            else
+            {
+                n.Add("Id", cuenta.Id.ToString());
+                n.Add("IdCliente", cuenta.IdCliente.ToString());
+                n.Add("NroCuenta", cuenta.NroCuenta.ToString());
+                n.Add("Descripcion", cuenta.Descripcion);
+                n.Add("FechaApertura", cuenta.FechaApertura.ToShortDateString()); // DateTime
+                n.Add("FechaModificacion", cuenta.FechaModificacion.ToShortDateString()); // DateTime
+                n.Add("Activo", cuenta.Activo.ToString()); // bool
+            }
             return n;
         }
 

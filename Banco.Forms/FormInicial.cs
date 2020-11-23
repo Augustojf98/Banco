@@ -25,7 +25,17 @@ namespace Banco.Forms
             this.dataGridView1.DataSource = bancoServicio.CuentaServicio.ClienteServicio.TraerClientes();
             this.dataGridView1.ReadOnly = true;
             this.dataGridView2.DataSource = bancoServicio.CuentaServicio.TraerCuentas();
-            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.CellValueChanged += DataGridView2_CellValueChanged;
+        }
+
+        private void DataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            Cuenta cuenta = new Cuenta();
+
+            cuenta.NroCuenta = (int)this.dataGridView2.Rows[e.RowIndex].Cells[1].Value;
+            cuenta.Saldo = (float)this.dataGridView2.Rows[e.RowIndex].Cells[2].Value;
+
+            this.bancoServicio.CuentaServicio.EditarSaldo(cuenta.NroCuenta, cuenta.Saldo);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,6 +48,10 @@ namespace Banco.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            foreach (Cuenta cuenta in (List<Cuenta>)dataGridView2.DataSource)
+            {
+                this.bancoServicio.CuentaServicio.EditarSaldo(cuenta.NroCuenta, cuenta.Saldo);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

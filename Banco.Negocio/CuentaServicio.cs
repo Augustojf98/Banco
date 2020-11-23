@@ -88,7 +88,7 @@ namespace Banco.Negocio
             {
                 cuenta.Saldo = saldo;
 
-                TransactionResult result = cuentaMapper.Insert(cuenta);
+                TransactionResult result = cuentaMapper.Put(cuenta);
 
                 if (result.IsOk)
                 {
@@ -117,7 +117,7 @@ namespace Banco.Negocio
             return null;
         }
 
-        internal Cuenta BuscarCuentaById(int id)
+        public Cuenta BuscarCuentaById(int id)
         {
             foreach (Cuenta cuenta in cuentas)
             {

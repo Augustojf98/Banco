@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
@@ -17,7 +18,8 @@ namespace Banco.Datos
         {
             client = new WebClient();
             client.Encoding = Encoding.UTF8;
-            rutaBase = "https://cai-api.azurewebsites.net/api/v1";
+            //rutaBase = "https://cai-api.azurewebsites.net/api/v1";
+            rutaBase = ConfigurationManager.AppSettings["rutaBase"];
 
             client.Headers.Add("ContentType", "application/json");
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
