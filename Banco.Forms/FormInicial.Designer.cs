@@ -35,9 +35,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.cuentasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
-            this.formInicialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cuentasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ColumnVerPrestamos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nroCuentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +47,6 @@
             this.fechaAperturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaModificacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuentaServicioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaAltaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activoDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -58,16 +57,17 @@
             this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaNacimientoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.formInicialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cuentasBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.formInicialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cuentaServicioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.formInicialBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -89,7 +89,7 @@
             this.telefonoDataGridViewTextBoxColumn,
             this.emailDataGridViewTextBoxColumn,
             this.fechaNacimientoDataGridViewTextBoxColumn,
-            this.Column1});
+            this.ColumnVerPrestamos});
             this.dataGridView1.DataSource = this.clienteBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MaximumSize = new System.Drawing.Size(2100, 1000);
@@ -174,11 +174,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(760, 311);
             this.dataGridView2.TabIndex = 0;
             // 
-            // cuentasBindingSource
-            // 
-            this.cuentasBindingSource.DataMember = "Cuentas";
-            this.cuentasBindingSource.DataSource = this.cuentaServicioBindingSource;
-            // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -190,9 +185,18 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // formInicialBindingSource
+            // cuentasBindingSource
             // 
-            this.formInicialBindingSource.DataSource = typeof(Banco.Forms.FormInicial);
+            this.cuentasBindingSource.DataMember = "Cuentas";
+            this.cuentasBindingSource.DataSource = this.cuentaServicioBindingSource;
+            // 
+            // ColumnVerPrestamos
+            // 
+            this.ColumnVerPrestamos.DataPropertyName = "Ver préstamos";
+            this.ColumnVerPrestamos.HeaderText = "Préstamos";
+            this.ColumnVerPrestamos.Name = "ColumnVerPrestamos";
+            this.ColumnVerPrestamos.Text = "Ver préstamos";
+            this.ColumnVerPrestamos.UseColumnTextForButtonValue = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -252,10 +256,6 @@
             // cuentaServicioBindingSource
             // 
             this.cuentaServicioBindingSource.DataSource = typeof(Banco.Negocio.CuentaServicio);
-            // 
-            // clienteBindingSource
-            // 
-            this.clienteBindingSource.DataSource = typeof(Banco.Entidades.Cliente);
             // 
             // idDataGridViewTextBoxColumn1
             // 
@@ -317,31 +317,35 @@
             this.fechaNacimientoDataGridViewTextBoxColumn.HeaderText = "FechaNacimiento";
             this.fechaNacimientoDataGridViewTextBoxColumn.Name = "fechaNacimientoDataGridViewTextBoxColumn";
             // 
-            // Column1
+            // clienteBindingSource
             // 
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.HeaderText = "Préstamos";
-            this.Column1.Name = "Column1";
+            this.clienteBindingSource.DataSource = typeof(Banco.Entidades.Cliente);
+            // 
+            // formInicialBindingSource
+            // 
+            this.formInicialBindingSource.DataSource = typeof(Banco.Forms.FormInicial);
             // 
             // FormInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
             this.Name = "FormInicial";
             this.Text = "Banco";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cuentasBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.formInicialBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cuentaServicioBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.formInicialBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,6 +371,7 @@
         private System.Windows.Forms.BindingSource cuentasBindingSource;
         private System.Windows.Forms.BindingSource cuentaServicioBindingSource;
         private System.Windows.Forms.BindingSource formInicialBindingSource;
+        private System.Windows.Forms.BindingSource clienteBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaAltaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activoDataGridViewCheckBoxColumn1;
@@ -377,8 +382,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefonoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaNacimientoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn Column1;
-        private System.Windows.Forms.BindingSource clienteBindingSource;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnVerPrestamos;
     }
 }
 

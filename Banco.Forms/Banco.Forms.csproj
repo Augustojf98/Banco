@@ -58,6 +58,12 @@
     <Compile Include="FormNuevaCuenta.Designer.cs">
       <DependentUpon>FormNuevaCuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrestamos.Designer.cs">
+      <DependentUpon>FormPrestamos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormInicial.resx">
@@ -65,6 +71,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormNuevaCuenta.resx">
       <DependentUpon>FormNuevaCuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrestamos.resx">
+      <DependentUpon>FormPrestamos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,6 +85,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\Banco.Entidades.Cliente.datasource" />
+    <None Include="Properties\DataSources\Banco.Entidades.Prestamo.datasource" />
+    <None Include="Properties\DataSources\Banco.Entidades.PrestamoTipo.datasource" />
     <None Include="Properties\DataSources\Banco.Negocio.CuentaServicio.datasource" />
     <None Include="Properties\DataSources\FormInicial.datasource" />
     <None Include="Properties\Settings.settings">

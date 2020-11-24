@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Configuration;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Banco.Entidades
 {
+    [DataContract]
     public class Prestamo : PrestamoTipo
     {
         private int _plazo;
@@ -15,7 +17,8 @@ namespace Banco.Entidades
         private int _id;
         private int _idCliente;
 
-        public string Linea
+        [DataMember]
+        public new string Linea
         {
             get
             {
@@ -27,7 +30,8 @@ namespace Banco.Entidades
             }
         }
 
-        public double TNA
+        [DataMember]
+        public new double TNA
         {
             get
             {
@@ -39,6 +43,7 @@ namespace Banco.Entidades
             }
         }
 
+        [DataMember]
         public int Plazo
         {
             get
@@ -51,6 +56,7 @@ namespace Banco.Entidades
             }
         }
 
+        [DataMember]
         public double Monto
         {
             get
@@ -63,18 +69,16 @@ namespace Banco.Entidades
             }
         }
 
+        [DataMember]
         public string Usuario
         {
             get
             {
-                return this._usuario;
-            }
-            set
-            {
-                this._usuario = ConfigurationManager.AppSettings["Legajo"];
+                return ConfigurationManager.AppSettings["Legajo"];
             }
         }
 
+        [DataMember]
         public int IdCliente
         {
             get
@@ -87,6 +91,7 @@ namespace Banco.Entidades
             }
         }
 
+        [DataMember]
         public int Id
         {
             get
@@ -99,6 +104,7 @@ namespace Banco.Entidades
             }
         }
 
+        [DataMember]
         public double CuotaCapital
         {
             get
@@ -107,6 +113,7 @@ namespace Banco.Entidades
             }
         }
 
+        [DataMember]
         public double CuotaInteres
         {
             get
@@ -115,12 +122,18 @@ namespace Banco.Entidades
             }
         }
 
+        [DataMember]
         public double Cuota
         {
             get
             {
                 return this.CuotaCapital + this.CuotaInteres;
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} - Tasa {1} | Monto: ${2} | Plazo: {3} meses | Cuota: ${4}", this._linea, this.TNA, this._monto, this._plazo, this.Cuota);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Banco.Datos
         public List<Prestamo> TraerTodos()
         {
             int registro = int.Parse(ConfigurationManager.AppSettings["Legajo"]);
-            string json2 = WebHelper.Get("/prestamo/{registro}"); // trae un texto en formato json de una web
+            string json2 = WebHelper.Get(string.Format("/prestamo/{0}", registro)); // trae un texto en formato json de una web
             List<Prestamo> resultado = MapList(json2);
             return resultado;
         }
@@ -23,7 +23,7 @@ namespace Banco.Datos
         public List<Prestamo> TraerPorCliente(int idCliente)
         {
             int registro = int.Parse(ConfigurationManager.AppSettings["Legajo"]);
-            string json2 = WebHelper.Get("/prestamo/{registro}/{idCliente}"); // trae un texto en formato json de una web
+            string json2 = WebHelper.Get(string.Format("/prestamo/{0}/{1}", registro, idCliente)); // trae un texto en formato json de una web
             List<Prestamo> resultado = MapList(json2);
             return resultado;
         }
@@ -73,13 +73,13 @@ namespace Banco.Datos
         {
             NameValueCollection n = new NameValueCollection();
             n.Add("id", prestamo.Id.ToString());
-            n.Add("tna", prestamo.TNA.ToString());
-            n.Add("linea", prestamo.Linea.ToString());
-            n.Add("plazo", prestamo.Plazo.ToString());
+            n.Add("TNA", prestamo.TNA.ToString());
+            n.Add("Linea", prestamo.Linea.ToString());
+            n.Add("Plazo", prestamo.Plazo.ToString());
             n.Add("idCliente", prestamo.IdCliente.ToString());
-            n.Add("monto", prestamo.Monto.ToString());
-            n.Add("cuota", prestamo.Cuota.ToString());
-            n.Add("usuario", prestamo.Usuario.ToString());
+            n.Add("Monto", prestamo.Monto.ToString());
+            n.Add("Cuota", prestamo.Cuota.ToString());
+            n.Add("Usuario", prestamo.Usuario.ToString());
             return n;
         }
 

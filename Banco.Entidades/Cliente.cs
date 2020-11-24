@@ -68,6 +68,11 @@ namespace Banco.Entidades
             this.fechaAlta = Convert.ToDateTime(DateTime.Now.ToShortDateString());
         }
 
+        public Cliente()
+        {
+
+        }
+
         public override string ToString()
         {
             return string.Format("Cliente {0} {1}, DNI {2}.", this.nombre?.ToUpper(), this.apellido?.ToUpper(), this.dni);

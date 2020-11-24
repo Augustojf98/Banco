@@ -26,6 +26,30 @@ namespace Banco.Forms
             this.dataGridView1.ReadOnly = true;
             this.dataGridView2.DataSource = bancoServicio.CuentaServicio.TraerCuentas();
             this.dataGridView2.CellValueChanged += DataGridView2_CellValueChanged;
+            this.dataGridView1.CellClick += DataGridView1_CellClick;
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 10)
+            {
+                Cliente cliente = new Cliente();
+                cliente.Nombre = (string)this.dataGridView1.Rows[e.RowIndex].Cells[4].Value;
+                cliente.Apellido = (string)this.dataGridView1.Rows[e.RowIndex].Cells[5].Value;
+                cliente.Id = (int)this.dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                cliente.DNI = (int)this.dataGridView1.Rows[e.RowIndex].Cells[3].Value;
+
+                FormPrestamos formPrestamos = new FormPrestamos(bancoServicio, cliente);
+                formPrestamos.Owner = this;
+                formPrestamos.Show();
+                this.Enabled = false;
+                formPrestamos.FormClosed += FormPrestamos_FormClosed;
+            }
+        }
+
+        private void FormPrestamos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Enabled = true;
         }
 
         private void DataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
