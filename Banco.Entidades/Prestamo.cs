@@ -131,6 +131,14 @@ namespace Banco.Entidades
             }
         }
 
+        public double ComisionTotal
+        {
+            get
+            {
+                return this.CuotaInteres * this._plazo;
+            }
+        }
+
         public override string ToString()
         {
             return string.Format("{0} - Tasa {1} | Monto: ${2} | Plazo: {3} meses | Cuota: ${4}", this._linea, this.TNA, this._monto, this._plazo, this.Cuota);

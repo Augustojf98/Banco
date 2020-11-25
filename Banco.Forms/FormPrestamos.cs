@@ -35,6 +35,7 @@ namespace Banco.Forms
             textBoxCuotaCapital.Text = "";
             textBoxCuotaInteres.Text = "";
             textBoxCuotaTotal.Text = "";
+            textBoxComisionTotal.Text = "";
             this.textBoxLinea.Text = (this.listBoxTipoPrestamos.SelectedItem as PrestamoTipo).Linea;
             this.textBoxTNA.Text = string.Format("{0} %", (this.listBoxTipoPrestamos.SelectedItem as PrestamoTipo).TNA);
         }
@@ -54,6 +55,7 @@ namespace Banco.Forms
                     textBoxCuotaCapital.Text = prestamo.CuotaCapital.ToString();
                     textBoxCuotaInteres.Text = prestamo.CuotaInteres.ToString();
                     textBoxCuotaTotal.Text = prestamo.Cuota.ToString();
+                    textBoxComisionTotal.Text = prestamo.ComisionTotal.ToString();
                 }
                 else
                 {
@@ -80,6 +82,16 @@ namespace Banco.Forms
                     prestamo.IdCliente = cliente.Id;
 
                     this.banco.PrestamoServicio.CargarPrestamo(prestamo);
+                    this.listBoxPrestamos.DataSource = null;
+                    this.listBoxPrestamos.DataSource = banco.PrestamoServicio.Prestamos.Where(w => w.IdCliente == cliente.Id).ToList();
+                    textBoxCuotaCapital.Text = "";
+                    textBoxCuotaInteres.Text = "";
+                    textBoxCuotaTotal.Text = "";
+                    textBoxComisionTotal.Text = "";
+                    textBoxLinea.Text = "";
+                    textBoxTNA.Text = "";
+                    textBoxMonto.Text = "";
+                    textBoxPlazo.Text = "";
                 }
                 else
                 {
