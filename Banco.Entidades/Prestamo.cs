@@ -135,7 +135,7 @@ namespace Banco.Entidades
         {
             get
             {
-                return this.CuotaInteres * this._plazo;
+                return this.CuotaInteres * this._plazo * 0.15;
             }
         }
 
