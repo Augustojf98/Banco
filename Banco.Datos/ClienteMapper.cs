@@ -63,7 +63,9 @@ namespace Banco.Datos
         {
             string hostName = Dns.GetHostName();
             string usuarioUtilizado;
-            string usuario1 = ConfigurationManager.AppSettings["Legajo"];
+            //string usuario1 = ConfigurationManager.AppSettings["Legajo"];
+
+            string usuario1 = "889059";
 
             if (usuario1 != null)
                 usuarioUtilizado = usuario1;
@@ -78,10 +80,10 @@ namespace Banco.Datos
             n.Add("Direccion", cliente.Direccion);
             n.Add("Usuario", usuarioUtilizado);
             n.Add("Host", Dns.GetHostByName(hostName).AddressList[0].ToString());
-            n.Add("Mail", cliente.Email); // STRING
+            n.Add("Email", cliente.Email); // STRING
             n.Add("Telefono", cliente.Telefono.ToString()); // INT
-            n.Add("FechaAlta", cliente.FechaAlta.ToShortDateString()); // DateTime
-            n.Add("FechaNacimiento", cliente.FechaNacimiento.ToShortDateString()); // DateTime
+            n.Add("FechaAlta", cliente.FechaAlta.ToString("yyyy-MM-dd")); // DateTime
+            n.Add("FechaNacimiento", cliente.FechaNacimiento.ToString("yyyy-MM-dd")); // DateTime
             n.Add("Activo", cliente.Activo.ToString()); // bool
             return n;
         }

@@ -31,6 +31,20 @@ namespace Banco.Negocio
             }
         }
 
+        public int AgregarCliente()
+        {
+            TransactionResult result = clienteMapper.Insert(new Cliente(400, 41063486, "Augusto", "Falsone", "Falsa 123", "12334545", "pipo.falsone@gmail.com", "03-27-1998"));
+
+            if (result.IsOk)
+            {
+                return result.Id;
+            }
+            else
+            {
+                throw new Exception("Ocurrió un error en el servidor, " + result.Error);
+            }
+        }
+
         public List<Cliente> TraerClientes()
         {
             this.clientes = clienteMapper.TraerTodos();

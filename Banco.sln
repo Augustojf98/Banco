@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banco.Datos", "Banco.Datos\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banco.Negocio", "Banco.Negocio\Banco.Negocio.csproj", "{16B491C6-1760-41D6-A28C-49E14B1D8DE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banco.Consola", "Banco.Consola\Banco.Consola.csproj", "{F16562C0-6E59-4DC6-8D6E-578951CDA694}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{16B491C6-1760-41D6-A28C-49E14B1D8DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16B491C6-1760-41D6-A28C-49E14B1D8DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16B491C6-1760-41D6-A28C-49E14B1D8DE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F16562C0-6E59-4DC6-8D6E-578951CDA694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F16562C0-6E59-4DC6-8D6E-578951CDA694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F16562C0-6E59-4DC6-8D6E-578951CDA694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F16562C0-6E59-4DC6-8D6E-578951CDA694}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

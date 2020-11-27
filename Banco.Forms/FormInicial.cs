@@ -54,12 +54,23 @@ namespace Banco.Forms
 
         private void DataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            Cuenta cuenta = new Cuenta();
+            try
+            {
+                Cuenta cuenta = new Cuenta();
 
-            cuenta.NroCuenta = (int)this.dataGridView2.Rows[e.RowIndex].Cells[1].Value;
-            cuenta.Saldo = (float)this.dataGridView2.Rows[e.RowIndex].Cells[2].Value;
+                cuenta.NroCuenta = (int)this.dataGridView2.Rows[e.RowIndex].Cells[1].Value;
+                cuenta.Saldo = (float)this.dataGridView2.Rows[e.RowIndex].Cells[2].Value;
+                cuenta.IdCliente = (int)this.dataGridView2.Rows[e.RowIndex].Cells[3].Value;
 
-            this.bancoServicio.CuentaServicio.EditarSaldo(cuenta.NroCuenta, cuenta.Saldo);
+                this.bancoServicio.CuentaServicio.EditarSaldo(cuenta.NroCuenta, cuenta.Saldo);
+                Cliente cliente = this.bancoServicio.CuentaServicio.ClienteServicio.BuscarClienteById(cuenta.IdCliente);
+
+                this.bancoServicio.UtilidadServicio.EnviarCorreo(cliente.Email, "Modificación saldo", "Su nuevo saldo es de " + cuenta.Saldo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

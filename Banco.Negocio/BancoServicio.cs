@@ -13,12 +13,26 @@ namespace Banco.Negocio
         private Entidades.Banco banco;
         private CuentaServicio cuentaServicio;
         private PrestamoServicio prestamoServicio;
+        private UtilidadServicio utilidadServicio;
 
         public BancoServicio()
         {
             this.banco = new Entidades.Banco(1, "Banco Hipotecario S.A.", "Reconquista 151, CABA", "09-24-1886");
             this.cuentaServicio = new CuentaServicio();
             this.prestamoServicio = new PrestamoServicio();
+            this.utilidadServicio = new UtilidadServicio();
+        }
+
+        public UtilidadServicio UtilidadServicio
+        {
+            get
+            {
+                return this.utilidadServicio;
+            }
+            set
+            {
+                this.utilidadServicio = value;
+            }
         }
 
         public CuentaServicio CuentaServicio
