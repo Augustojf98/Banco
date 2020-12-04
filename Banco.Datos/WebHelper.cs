@@ -18,8 +18,8 @@ namespace Banco.Datos
         {
             client = new WebClient();
             client.Encoding = Encoding.UTF8;
-            rutaBase = "https://cai-api.azurewebsites.net/api/v1";
-            //rutaBase = ConfigurationManager.AppSettings["rutaBase"];
+            //rutaBase = "https://cai-api.azurewebsites.net/api/v1";
+            rutaBase = ConfigurationManager.AppSettings["rutaBase"];
 
             client.Headers.Add("ContentType", "application/json");
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -68,7 +68,7 @@ namespace Banco.Datos
             }
             catch (Exception ex)
             {
-                return "{ \"isOk\":true,\"id\":5,\"error\":null}";
+                return "{ \"isOk\":false,\"id\":-1,\"error\":null}";
             }
 
 
@@ -88,7 +88,7 @@ namespace Banco.Datos
             }
             catch (Exception ex)
             {
-                return "{ \"isOk\":true,\"id\":5,\"error\":null}";
+                return "{ \"isOk\":false,\"id\":-1,\"error\":null}";
             }
 
 
